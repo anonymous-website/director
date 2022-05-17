@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #eee;
+}
+
+main {
+  max-width: 50em;
+  margin: 0 auto;
+  padding: 3em;
+  background: #fff;
+  box-shadow: 0 0 1em rgba(0,0,0,.1);
+}
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+img, video {
+  max-width: 100%;
+}
+
+p, li, pre {
+  font-size: 1.2em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 2em 0 .5em;
+}
+
+header { text-align: center; }
+header h1 { margin: 0; }
+header h2 { margin: 1em 0 3em; }
+
+pre, code {
+  font-family: 'Roboto Mono', monospace;
+}
+
+pre {
+  overflow: auto;
+}
+
