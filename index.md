@@ -9,12 +9,17 @@ layout: default
 
 Please do not try to find the repository that hosts this website.
 
-## Videos
+## Director Agent
+
+<img src="method.png" />
+
+## Episode Goals
 
 TODO
 
-## Instructions
-
-The code is available for download: [director.zip](director.zip)
+## Replay Goals
 
 TODO
+
+<!-- ## Instructions -->
+<!-- The code is available for download: [director.zip](director.zip) -->
