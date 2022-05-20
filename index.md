@@ -13,13 +13,18 @@ Please do not try to find the repository that hosts this website.
 
 <img src="method.png" />
 
-## Sparse Reward Tasks
+## Goal Visualizations
 
 Each video shows the agent inputs along an episode on the left and the decoded
 latent goals that Director uses internally on the right.
 
+As you can see, the goals are usually ahead of what the agent is currently
+doing. The agent rarely reaches its internal goals because once it comes close,
+the manager already proposes the next goal that is further ahead.
+
 ### Visual Pin Pad Six
 
+There is only one sparse reward after activating all pads in the right order.
 The manager directs the worker mainly via the history display at the bottom of
 the image but also via the position of the black player square.
 
@@ -33,11 +38,6 @@ the image but also via the position of the black player square.
 
 <video autoplay muted loop controls><source src="goals/mazexl.mp4"></video>
 
-## Standard Tasks
-
-Each video shows the agent inputs along an episode on the left and the decoded
-latent goals that Director uses internally on the right.
-
 ### Cartpole Swingup
 
 <video autoplay muted loop controls><source src="goals/cartpole.mp4"></video>
@@ -48,17 +48,30 @@ latent goals that Director uses internally on the right.
 
 ## Walker Walk
 
+The manager abstracts away the detail of leg movement, directing the worker
+through a forward-leaning pose with both feed above the ground and a shifting
+floor pattern. The worker fills in the leg movement to pass through the goals.
+
 <video autoplay muted loop controls><source src="goals/walker.mp4"></video>
 
 ## Humanoid Walk
 
 <video autoplay muted loop controls><source src="goals/humanoid.mp4"></video>
 
-## Poing
+## Atari Pong
+
+Because the game is reactive and requires no long-term reasoning, the manager
+learns to communicate the task to the worker by requesting a higher score via
+the score display at the top of the screen.
 
 <video autoplay muted loop controls><source src="goals/pong.mp4"></video>
 
 ## Crafter
+
+The manager directs the worker via the item display to collect wood and create
+a pickaxe. It then sends the worker to a cave to collect stone and iron. As it
+gets dark, the manager tells the worker to find a small cave or island to hide
+from mosters.
 
 <video autoplay muted loop controls><source src="goals/crafter.mp4"></video>
 
