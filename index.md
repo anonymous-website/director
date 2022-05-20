@@ -75,6 +75,11 @@ from mosters.
 
 <video autoplay muted loop controls><source src="goals/crafter.mp4"></video>
 
+### DMLab Goals Small
+
+<video autoplay muted loop controls><source src="goals/dmlab.mp4"></video>
+
+
 ## Without Goal Autoencoder
 
 Director uses a goal autoencoder to aid manager learning by providing a
@@ -93,10 +98,24 @@ Each video shows the **agent inputs along an episode on the left** and the
 As you can see, the goals are completely uninterpretable and cause the agent to
 fail in many, but not all, of the tested environments.
 
-<video autoplay muted loop controls><source src="noae/pinpad5.mp4"></video><br>
-<video autoplay muted loop controls><source src="noae/walker.mp4"></video><br>
-<video autoplay muted loop controls><source src="noae/humanoid.mp4"></video><br>
-<video autoplay muted loop controls><source src="noae/crafter.mp4"></video><br>
+### Visual Pin Pad Five
+
+<video autoplay muted loop controls><source src="noae/pinpad5.mp4"></video>
+
+### Walker Walk
+
+<video autoplay muted loop controls><source src="noae/walker.mp4"></video>
+
+### Humanoid Walk
+
+<video autoplay muted loop controls><source src="noae/humanoid.mp4"></video>
+
+### Crafter
+
+<video autoplay muted loop controls><source src="noae/crafter.mp4"></video>
+
+### DMLab Goals Small
+
 <video autoplay muted loop controls><source src="noae/dmlab.mp4"></video>
 
 <!-- ## Replay Goals -->
