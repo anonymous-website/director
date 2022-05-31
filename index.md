@@ -4,21 +4,98 @@ layout: default
 
 <header>
 <h1>Deep Hierarchical Planning from Pixels</h1>
-<h2>Anonymous Website for Peer Review</h2>
+<p>Anonymous Website for Peer Review.</p>
+<p>Please do not try to find the repository that hosts this website.</p>
 </header>
 
-Please do not try to find the repository that hosts this website.
+<!-- ## Introducing Director -->
+<!-- TODO: gif composition of many different domains -->
+<!-- TODO: summary of contributions, insights, and results -->
 
-## Director Agent
+## How Director Works
 
-<img src="method.png" />
+We introduce Director, a reinforcement learning agent that learns hierarchical
+behaviors from pixels by planning inside of a learned world model:
+
+<img src="figs/method.png" />
+
+This is how Director works:
+
+- The
+<span style='color: #93c47d; font-weight: bold'>world model</span>
+provides continuous 1024-dimensional representations and allows planning in
+this space.
+
+- The
+<span style='color: #6fa8dc; font-weight: bold'>goal autoencoder</span>
+compresses the world model representations into compact discrete codes.
+
+- The
+<span style='color: #f6b26b; font-weight: bold'>manager</span>
+selects codes in this discrete space every 8 steps. The goal autoencoder
+decodes these codes into feature space goals.
+
+- The
+<span style='color: #cc4125; font-weight: bold'>worker</span>
+learns to reach these goals via a feature space distance.
+
+The manager maximizes **task reward** plus **exploration bonus** and the worker
+only learn from the **feature distance**. Both policies learn from shared
+imagind rollouts.
+
+All model components are optimized concurrently and throughout learning on
+end-to-end reinforcement learning tasks.
+
+## Egocentric Ant Maze Benchmark
+
+Prior work often resorted to custom evaluation protocols, such as assuming
+diverse practice goals during training, providing top-down XY coordinates to
+the agent, and requiring dense ground-truth distance rewards. In this paper, we
+train end-to-end on reinforcement learning tasks with very sparse rewards
+directly from raw sensory inputs, without assuming access to semantic goal
+spaces.
+
+<img src="figs/prior.png" />
+
+In this benchmark, a quadruped robot is controlled through joint torques to
+navigate to a fixed location in a 3D maze, given only first-person camera and
+proprioceptive inputs. The only reward is given at time steps where the agent
+touches the reward object. Director solves all four tasks by breaking them down
+into manageable subgoals that the worker can reach.
+
+<img src="figs/mazes.png" />
+
+## Visual Pin Pad benchmark
+
+The agent controls the black square to move in four directions. Each
+environment has a different number of pads that can be activated by walking to
+and stepping on them. A single sparse reward is given when the agent activates
+all pads in the correct sequence. The history of previously activated pads is
+shown at the bottom of the screen. Unlike prior algorithms, Director succeeds
+across difficulty levels.
+
+<img src="figs/pinpads.png" />
+
+## Standard Benchmarks
+
+To evaluate the generality of Director, we train on a wide range of standard
+benchmarks, including continuous control from pixels, Atari games, DMLab mazes,
+and Crafter. We find that Director learns successfully across all these
+domains, despite the worker learning only from the intrinsic goal reward. When
+additionally giving task reward to the worker, Director fully closes the gap to
+Dreamer, demonstrating that Director is a generally applicable RL algorithm.
+
+<img src="figs/standard.png" />
 
 ## Goal Visualizations
 
-Each video shows the **agent inputs along an episode on the left** and the
-**decoded latent goals that Director uses internally on the right**.
+While Director uses latent feature vectors as goals, the world model allows us
+to decode them into images for human inspection. Each video shows:
 
-As you can see, the goals are usually ahead of what the agent is currently
+- **Left:** The environment inputs of an episode as seen by the agent
+- **Right:** The visualized goals that Director chooses internally
+
+As you will see, the goals are usually ahead of what the agent is currently
 doing. The agent rarely reaches its internal goals because once it comes close,
 the manager already proposes the next goal that is further ahead.
 
@@ -92,8 +169,10 @@ feature space of the world model.
 
 <img src="noae.png" />
 
-Each video shows the **agent inputs along an episode on the left** and the
-**decoded latent goals that the hierarchy uses internally on the right**.
+Just like before, each video shows:
+
+- **Left:** The environment inputs of an episode as seen by the agent
+- **Right:** The visualized goals that Director chooses internally
 
 As you can see, the goals are completely uninterpretable and cause the agent to
 fail in many, but not all, of the tested environments.

@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
-@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono');
 
 * {
   box-sizing: border-box;
@@ -27,16 +27,26 @@ img, video {
 }
 
 p, li, pre {
-  font-size: 1.2em;
+  font-size: 1.2rem;
+}
+
+p, img {
+  margin: .8em 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
   margin: 2em 0 .5em;
+  font-weight: 700;
+}
+
+li p {
+  margin: .5em 0;
 }
 
 header { text-align: center; }
-header h1 { margin: 0; }
+header h1 { margin: 0 0 1em; }
 header h2 { margin: 1em 0 3em; }
+header p { margin: .5em 0; }
 
 pre, code {
   font-family: 'Roboto Mono', monospace;
